@@ -1,0 +1,18 @@
+# Python virtual environment
+.venv/
+venv/
+env/
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Environment variables / secrets
+.env
+
+# IDE
+.vscode/
+.idea/
+
+# Local memo
+docker_folder/memo

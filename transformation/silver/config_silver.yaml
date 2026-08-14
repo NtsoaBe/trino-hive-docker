@@ -1,0 +1,8 @@
+trino:
+  host: localhost
+  port: 8080
+  user: python
+  catalog: iceberg
+
+query:
+  path: transformation/silver/sql/silver_query.sql

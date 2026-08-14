@@ -1,0 +1,8 @@
+CREATE SCHEMA {{ catalog }}.{{ schema }}
+{% if schema_properties is defined %}
+WITH (
+{% for k, v in schema_properties.items() -%}
+    {{ k }} = '{{ v }}'{% if not loop.last %},{% endif %}
+{% endfor %}
+)
+{% endif %}

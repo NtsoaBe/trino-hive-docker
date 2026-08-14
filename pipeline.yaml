@@ -1,0 +1,10 @@
+steps:
+  - name: ingestion.ingestion_weather_data
+    comment: 'Ingest data from the API source in the bronze layer' 
+    in:
+      ingestion_config_file: 'ingestion/config.yaml'
+  
+  - name: transformation.silver.silver
+    comment: 'Run the silver layer'
+    in: 
+      silver_config_file: 'transformation/silver/config_silver.yaml'

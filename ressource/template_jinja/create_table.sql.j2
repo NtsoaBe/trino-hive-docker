@@ -1,0 +1,12 @@
+CREATE TABLE IF NOT EXISTS {{ catalog }}.{{ schema }}.{{ table_name }} (
+{% for col in columns -%}
+    {{ col.name }} {{ col.type }}{% if not loop.last %},{% endif %}
+{% endfor %}
+)
+{% if table_properties is defined %}
+WITH (
+{% for k, v in table_properties.items() -%}
+    {{ k }} = '{{ v }}'{% if not loop.last %},{% endif %}
+{% endfor %}
+)
+{% endif %}

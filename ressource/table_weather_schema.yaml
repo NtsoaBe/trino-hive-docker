@@ -1,0 +1,43 @@
+catalog: iceberg
+schema: project_weather
+
+schema_properties:
+  location: s3a://warehouse/project_weather
+
+
+table_properties:
+  format: PARQUET
+  
+# table_name is now isolated inside each layer
+layers:
+  bronze:
+    table_name: weather_hourly_bronze
+    columns:
+      - name: raw_time
+        type: varchar
+      - name: temperature_2m
+        type: varchar
+      - name: relative_humidity_2m
+        type: varchar
+      - name: wind_speed_10m
+        type: varchar
+      
+  silver:
+    table_name: weather_hourly_silver
+    columns:
+      - name: time
+        type: timestamp
+      - name: temperature_2m
+        type: double
+      - name: relative_humidity_2m
+        type: integer
+      - name: wind_speed_10m
+        type: double
+
+  gold:
+    table_name: weather_gold
+    columns:
+      - name: time
+        type: timestamp
+      - name: avg_temperature_daily
+        type: double

@@ -1,0 +1,35 @@
+steps:
+  - name: ressource.check_ressource.check_schema
+    in:
+      target_schema: 'project_weather'  # Define your value here
+  
+  
+  - name: pypyr.steps.cmd
+    run: '{is_schema_not_exist}'
+    foreach: ['create_schema.sql.j2']
+    in:
+      cmd: .venv/bin/python ressource/render.py --template={i}
+
+  
+  - name: pypyr.steps.call
+    comment: Loop through each layer and call the check-and-create process
+    foreach:
+      - { layer: 'bronze', table: 'weather_hourly_bronze', template: 'create_table.sql.j2' }
+      - { layer: 'silver', table: 'weather_hourly_silver', template: 'create_table.sql.j2' }
+      - { layer: 'gold', table: 'weather_gold', template: 'create_table.sql.j2' }
+    in:
+      call: check_and_create_table
+
+# Define the reusable group of steps here
+check_and_create_table:
+  - name: ressource.check_ressource.check_table
+    comment: Check if the current table exists
+    in:
+      target_schema: 'project_weather'
+      target_table: '{i[table]}'
+
+  - name: pypyr.steps.cmd 
+    comment: Create the table only if the check returned true/false (depending on your variables)
+    run: '{is_table_not_exist}' 
+    in:
+      cmd: .venv/bin/python ressource/render.py --template={i[template]} --layer {i[layer]} --yaml_config table_weather_schema
