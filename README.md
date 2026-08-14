@@ -4,7 +4,8 @@ We use the datalakehouse concept
 
 
 ## Architechure Diagram
-![Exercise 1 (Trino Hive Postgres Minio on k8s)](https://user-images.githubusercontent.com/84711996/186559791-1b974247-dd1d-4ba1-bada-fe0759f5c8d4.jpeg)
+
+![Architecture Diagram](docs/architecture.png)
 
 
 ## You need to install docker and docker compose first
