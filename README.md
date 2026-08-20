@@ -54,3 +54,11 @@ Step 5 - Close down the running containers
 ```bash
 docker compose down -v
 ```
+
+## Future Work & Improvements
+Upcoming planned improvements include:
+
+- **Scalability:** Deploy the platform on a distributed Kubernetes cluster to support high availability and horizontal scalability.
+- **Infrastructure as Code (IaC):** Introduce Terraform to automate infrastructure provisioning and ensure reproducible, version-controlled environments.
+- **Semantic Layer Integration:** Integrate Cube Core as a centralized semantic layer and metric store, enabling BI developers and data analysts to securely and consistently query the platform's data.
+
