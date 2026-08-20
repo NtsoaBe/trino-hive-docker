@@ -49,7 +49,7 @@ docker compose up --build
 | Trino Server | 8080 |
 
 - You can use [Dbeaver] (https://dbeaver.io/), or [trino client] (https://trino.io/docs/current/client.html) if you want to connect to Trino server.
-From trino client
+- From trino client
 ```bash
 trino --server http://localhost:8080
 ```
