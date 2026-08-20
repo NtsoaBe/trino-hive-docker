@@ -1,5 +1,6 @@
 # trino-hive-docker
 This project is a modern Data Lakehouse platform built around the Medallion Architecture, with Bronze, Silver, and Gold layers.
+The platform progressively ingests, transforms, cleans, and enriches data as it moves through each layer, providing a structured foundation for analytics and downstream data consumption.
 
 
 ## Architechure Diagram
@@ -16,8 +17,10 @@ This project is a modern Data Lakehouse platform built around the Medallion Arch
 
 
 
-## You need to install docker and docker compose first
-
+## How do we run the application
+Step 0 - You need to install [here](https://docs.docker.com/get-started/get-docker/):
+- Docker
+- Docker compose 
 ## Create a python venv then install the requirements.txt
 
 ## Run Locally with Docker-compose
