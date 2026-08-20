@@ -21,7 +21,19 @@ The platform progressively ingests, transforms, cleans, and enriches data as it 
 Step 0 - You need to install [here](https://docs.docker.com/get-started/get-docker/):
 - Docker
 - Docker compose 
-## Create a python venv then install the requirements.txt
+
+Step 1 - Pull the project
+
+Step 2 - Inside the project, Go to the docker_folder directory
+```bash
+cd docker_folder
+```
+
+Step 1 - Create a python venv then install the requirements.txt
+```bash
+cd docker_folder
+```
+
 
 ## Run Locally with Docker-compose
 Step 0 - Go to the docker_folder directory
