@@ -23,36 +23,45 @@ Step 0 - You need to install [here](https://docs.docker.com/get-started/get-dock
 - Docker compose 
 
 Step 1 - Pull the project
-
-Step 2 - Inside the project, Go to the docker_folder directory
 ```bash
-cd docker_folder
+git clone https://github.com/NtsoaBe/trino-hive-docker.git
+```
+Step 2 - Inside the project create a python venv, then install the requirements.txt
+```bash
+cd trino-hive-docker
+
+python3 -m venv .venv
+source .venv/bin/activate
+
+pip install -r requirements.txt
 ```
 
-Step 1 - Create a python venv then install the requirements.txt
+
+Step 3 -  Go to the docker_folder directory, run all the service with docker compose
 ```bash
 cd docker_folder
-```
 
-
-## Run Locally with Docker-compose
-Step 0 - Go to the docker_folder directory
-```bash
-cd docker_folder
-```
-Step 1 - Implement with docker-compose
-```bash
 docker-compose up -d
 ```
-Step 2 - Run the workflow who automate the ressource creation
+## Service access
+| Service | Port |
+|---|---:|
+| MinIO Web UI | 9003 |
+| Trino Server | 8080 |
+
+You can use [Dbeaver] (https://dbeaver.io/), or [trino client] (https://trino.io/docs/current/client.html) if you want to connect to Trino server.
+
+## Ressource creation
+Run the workflow who automate the ressource creation
 ```bash
 pypyr create_ressource_workflow
 ```
-Step 3 - Run the pipeline to see the result
+## Run the pipeline
+You can run the entire pipeline using this command
 ```bash
 pypyr pipeline
 ```
-Step 4 -  Check the result in trino client
+Tehn, you can heck the result
 ```sql
 CREATE SCHEMA minio.test
 WITH (location = 's3a://test/');
@@ -63,11 +72,6 @@ WITH (
     external_location = 's3a://test/customer/'
 ) 
 AS SELECT * FROM tpch.tiny.customer;
-```
-
-Step 5 - Close down the running containers
-```bash
-docker compose down -v
 ```
 
 ## Future Work & Improvements
