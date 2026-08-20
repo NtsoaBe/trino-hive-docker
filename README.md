@@ -1,11 +1,19 @@
 # trino-hive-docker
-This is my dataplatform ptoject,
-We use the datalakehouse concept
+This project is a modern Data Lakehouse platform built around the Medallion Architecture, with Bronze, Silver, and Gold layers.
 
 
 ## Architechure Diagram
 
-![Architecture Diagram](docs/architecture.png)
+![Architecture Diagram](docs/Architecture_dataplatform.png)
+
+## Architecture & Tech Stack
+| Component | Technology | Description |
+|---|---|---|
+| Orchestrator | Pypyr | Executes YAML-based automation pipelines. |
+| Compute Engine | Trino | Handles data transformation and querying. |
+| Storage Layer | MinIO | Provides object storage for data. |
+| Table Format | Apache Iceberg | Manages and organizes data tables. |
+
 
 
 ## You need to install docker and docker compose first
