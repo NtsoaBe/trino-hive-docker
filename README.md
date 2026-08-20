@@ -2,7 +2,6 @@
 This project is a modern Data Lakehouse platform built around the Medallion Architecture, with Bronze, Silver, and Gold layers.
 The platform progressively ingests, transforms, cleans, and enriches data as it moves through each layer, providing a structured foundation for analytics and downstream data consumption.
 
-
 ## Architechure Diagram
 
 ![Architecture Diagram](docs/Architecture_dataplatform.png)
@@ -41,7 +40,7 @@ Step 3 -  Go to the docker_folder directory, run all the service with docker com
 ```bash
 cd docker_folder
 
-docker-compose up -d
+docker compose up --build
 ```
 ## Service access
 | Service | Port |
@@ -49,7 +48,11 @@ docker-compose up -d
 | MinIO Web UI | 9003 |
 | Trino Server | 8080 |
 
-You can use [Dbeaver] (https://dbeaver.io/), or [trino client] (https://trino.io/docs/current/client.html) if you want to connect to Trino server.
+- You can use [Dbeaver] (https://dbeaver.io/), or [trino client] (https://trino.io/docs/current/client.html) if you want to connect to Trino server.
+From trino client
+```bash
+trino --server http://localhost:8080
+```
 
 ## Ressource creation
 Run the workflow who automate the ressource creation
@@ -61,17 +64,10 @@ You can run the entire pipeline using this command
 ```bash
 pypyr pipeline
 ```
-Tehn, you can heck the result
+Then, heck the result
 ```sql
-CREATE SCHEMA minio.test
-WITH (location = 's3a://test/');
-
-CREATE TABLE minio.test.customer
-WITH (
-    format = 'ORC',
-    external_location = 's3a://test/customer/'
-) 
-AS SELECT * FROM tpch.tiny.customer;
+SELECT *
+    FROM iceberg.project_weather.weather_hourly_silver;
 ```
 
 ## Future Work & Improvements
